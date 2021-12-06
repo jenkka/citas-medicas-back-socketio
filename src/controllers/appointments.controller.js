@@ -120,9 +120,7 @@ class Appointments {
       end_minute: req.body.end_minute,
       purpose: req.body.purpose,
       client_username: req.body.client_username,
-      doctor_username: req.body.doctor_username,
-      messages: [],
-      files: []
+      doctor_username: req.body.doctor_username
     };
 
     if (Object.values(doc).includes(undefined)) {
@@ -137,7 +135,9 @@ class Appointments {
       end_date: endDate.toString(),
       purpose: req.body.purpose,
       client_username: req.body.client_username,
-      doctor_username: req.body.doctor_username
+      doctor_username: req.body.doctor_username,
+      messages: [],
+      files: []
     }
 
     if (doc.start_date === 'Invalid Date' || doc.end_date === 'Invalid Date') {
