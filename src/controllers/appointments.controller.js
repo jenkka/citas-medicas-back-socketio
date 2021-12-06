@@ -72,8 +72,10 @@ class Appointments {
       return;
     }
 
+    console.log('looking for appointment')
     database.collection.findOne({ _id: ObjectId(req.params.id) })
       .then(results => {
+        console.log('fetch complete')
 
         if (!results) {
           res.status(404).send('Appointment not found.');
@@ -81,7 +83,8 @@ class Appointments {
         }
 
         results.documents = results.files;
-
+        res.status(200).send(results);
+        return;
 
 
         // const directoryPath = path.join(__dirname, '..', 'uploads', req.params.id);
