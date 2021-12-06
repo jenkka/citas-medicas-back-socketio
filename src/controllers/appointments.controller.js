@@ -3,6 +3,8 @@ const ObjectId = require('mongodb').ObjectId;
 const fs = require('fs');
 const path = require('path');
 
+ 
+
 class Appointments {
   static addMessage(id, msg) {
     if (!msg) {
@@ -100,6 +102,7 @@ class Appointments {
 
 
   static createAppointment(req, res) {
+    
     const database = new Database('appointments');
 
     let doc = {
