@@ -12,7 +12,7 @@ router.post('/login', function(req, res) {
         let doc = {
           token: result._id
         }
-        
+
         doc.user = result.user;
         doc.doctorStatus = result.doctorStatus;
       
@@ -103,8 +103,8 @@ router.get('/google', function(req, res, next) {
   passport.authenticate('google', { scope: ['profile', 'email'], state: req.query.signup })(req,res,next);
 });
 
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: 'http://localhost:4200/error'}), (req, res) => {
-  let url = 'http://localhost:4200/login?created=' + req.created;
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: 'https://mymedicalappointments.herokuapp.com/error'}), (req, res) => {
+  let url = 'https://mymedicalappointments.herokuapp.com/login?created=' + req.created;
   if (!req.created) {
     url += '&token=' + req.sessionID + '&doctor=' + req.doctor;
   }

@@ -115,7 +115,7 @@ MongoClient.connect(process.env.MONGO_URL, {
 
         const io = socketIo(server, {
             cors: {
-                origin: 'http://localhost:4200',
+                origin: 'https://mymedicalappointments.herokuapp.com',
                 methods: ['GET', 'POST']
                 // allowHeaders: ['x-auth'],
                 // credentials: true
