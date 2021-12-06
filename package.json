@@ -5,12 +5,6 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "styles": "gulp styles",
-    "styles:watch": "gulp styles:watch",
-    "scripts": "gulp scripts",
-    "scripts:watch": "gulp scripts:watch",
-    "build": "gulp",
-    "serve": "gulp serve",
     "start": "node .",
     "dev": "cross-env NODE_ENV=dev nodemon ."
   },
