@@ -225,6 +225,9 @@ class Appointments {
 
         if (doc.fileName) {
           doc.files = appointment.files;
+          if (doc.files === undefined) {
+            doc.files = []
+          }
           doc.files.push(doc.fileName);
           delete doc.fileName;
         }
