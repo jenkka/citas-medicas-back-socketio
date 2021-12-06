@@ -80,22 +80,24 @@ class Appointments {
           return;
         }
 
-        results.documents = [];
-        const directoryPath = path.join(__dirname, '..', 'uploads', req.params.id);
+        results.documents = results.files;
 
-        fs.readdir(directoryPath, function (err, files) {
-          if (err) {
-              console.log(err);
-              return;
-          } 
+
+
+        // const directoryPath = path.join(__dirname, '..', 'uploads', req.params.id);
+        // fs.readdir(directoryPath, function (err, files) {
+        //   if (err) {
+        //       console.log(err);
+        //       return;
+        //   } 
           
-          files.forEach(function (file) {
-            results.documents.push(file);
-          });
+        //   files.forEach(function (file) {
+        //     results.documents.push(file);
+        //   });
 
-          res.status(200).send(results);
-          return;
-        });
+        //   res.status(200).send(results);
+        //   return;
+        // });
       })
       .catch(err => { });
   }
