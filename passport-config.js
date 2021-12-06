@@ -20,7 +20,7 @@ module.exports = function(passport) {
       }
 
       req.created = false;
-      req.doctor = false;
+      req.doctorStatus = false;
 
       const clients = new Database('clients');
       clients.collection.findOne({ email: newClient.email })
@@ -36,7 +36,7 @@ module.exports = function(passport) {
                 .then(doctor => {
                   if (doctor) {
                     console.log('Doctor exists in the database.');
-                    req.doctor = true;
+                    req.doctorStatus = true;
                     done(null, doctor);
                     return;
                   }

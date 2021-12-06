@@ -12,14 +12,9 @@ router.post('/login', function(req, res) {
         let doc = {
           token: result._id
         }
-
-        if(result.user) {
-          doc.user = result.user;
-          doc.doctorStatus = result.doctorStatus;
-        } else {
-          doc.user = JSON.parse(result.session).passport.user.username
-          doc.doctorStatus = false;
-        }
+        
+        doc.user = result.user;
+        doc.doctorStatus = result.doctorStatus;
       
         console.log('session with token', doc);
         res.status(200).send(doc);
