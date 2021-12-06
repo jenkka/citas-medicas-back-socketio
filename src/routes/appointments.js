@@ -5,21 +5,21 @@ const multer = require('multer');
 const path = require('path');
 
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, path.join(__dirname, '..', 'uploads', req.params.id))
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
-  });
-   
-var upload = multer({ storage: storage });
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, path.join(__dirname, '..', 'uploads', req.params.id))
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.originalname)
+//     }
+//   });
+// var upload = multer({ storage: storage });
+// appointmentsRouter.post('/:id', AuthController.isAuthenticated, AuthController.isAdmin, upload.single('image'), (req, res) => {
+//   res.status(200).send('File uploaded');
+// });
 
 
-appointmentsRouter.post('/:id', AuthController.isAuthenticated, AuthController.isAdmin, upload.single('image'), (req, res) => {
-  res.status(200).send('File uploaded');
-});
+appointmentsRouter.post('/:id', AuthController.isAuthenticated, AuthController.isAdmin, AppointmentsController.updateAppointment);
 
 /**
  * @swagger

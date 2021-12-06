@@ -116,7 +116,8 @@ class Appointments {
       purpose: req.body.purpose,
       client_username: req.body.client_username,
       doctor_username: req.body.doctor_username,
-      messages: []
+      messages: [],
+      files: []
     };
 
     if (Object.values(doc).includes(undefined)) {
@@ -157,12 +158,12 @@ class Appointments {
 
             database.collection.insertOne(doc)
               .then(results => {
-                var dir = './src/uploads/' + results.insertedId.toString();
+                // var dir = './src/uploads/' + results.insertedId.toString();
 
-                if (!fs.existsSync(dir)) {
-                  console.log('Trying to create appointment');
-                  fs.mkdirSync(dir);
-                }
+                // if (!fs.existsSync(dir)) {
+                //   console.log('Trying to create appointment');
+                //   fs.mkdirSync(dir);
+                // }
                 console.log('appointment created');
 
                 res.status(200).send('Appointment has been created.')
@@ -188,7 +189,8 @@ class Appointments {
     let doc = {
       purpose: req.body.purpose,
       client_username: req.body.client_username,
-      doctor_username: req.body.doctor_username
+      doctor_username: req.body.doctor_username,
+      fileName: req.body.fileName
     };
 
     Object.keys(doc).forEach(key => {
@@ -213,6 +215,12 @@ class Appointments {
         if (!appointment) {
           res.status(404).send('Appointment not found');
           return;
+        }
+
+        if (doc.fileName) {
+          doc.files = appointment.files;
+          doc.files.push(doc.fileName);
+          delete doc.fileName;
         }
 
         if (doc.client_username === undefined) {
