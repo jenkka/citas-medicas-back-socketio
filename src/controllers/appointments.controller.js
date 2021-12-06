@@ -183,6 +183,7 @@ class Appointments {
   }
 
   static updateAppointment(req, res) {
+    console.log('updating appointment')
     if (!ObjectId.isValid(req.params.id)) {
       res.status(422).send('Invalid appointment ID');
       return;
