@@ -160,8 +160,11 @@ class Appointments {
                 var dir = './src/uploads/' + results.insertedId.toString();
 
                 if (!fs.existsSync(dir)) {
+                  console.log('Trying to create appointment');
                   fs.mkdirSync(dir);
                 }
+                console.log('appointment created');
+
                 res.status(200).send('Appointment has been created.')
                 return;
               })
